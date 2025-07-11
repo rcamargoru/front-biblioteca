@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Autor, AutorService } from '../autor.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-@Component({
+@Component({ 
   selector: 'app-autor-list',
   standalone: true,
   imports: [CommonModule],

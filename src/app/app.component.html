@@ -1,6 +1,27 @@
-    <h1>Mi Biblioteca</h1>
+<!-- app.component.html -->
+<div class="layout">
+  <header class="header">
+    <h1>Sistema de Biblioteca</h1>
+  </header>
+
+  <aside class="sidebar">
     <nav>
-      <a routerLink="/">Home</a> |
-      <a routerLink="/autores">Autores</a>
+      <ul>
+        <li><a routerLink="/">Inicio</a></li>
+        <li><a routerLink="/autores">Autores</a></li>
+        <li><a routerLink="/generos">Géneros</a></li>
+        <li><a routerLink="/usuarios">Usuarios</a></li>
+        <li><a routerLink="/libros">Libros</a></li>
+        <li><a routerLink="/prestamos">Préstamos</a></li>
+      </ul>
     </nav>
+  </aside>
+
+  <main class="main">
     <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Biblioteca</p>
+  </footer>
+</div>

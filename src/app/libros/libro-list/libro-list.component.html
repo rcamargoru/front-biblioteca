@@ -1,1 +1,31 @@
-<p>libro-list works!</p>
+<h2>Libros</h2>
+<button (click)="nuevoLibro()">Nuevo Libro</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Género</th>
+      <th>ISBN</th>
+      <th>Stock</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let libro of libros">
+      <td>{{ libro.id }}</td>
+      <td>{{ libro.titulo }}</td>
+      <td>{{ libro.autorNombre }}</td>
+      <td>{{ libro.generoNombre }}</td>
+      <td>{{ libro.isbn }}</td>
+      <td>{{ libro.stock }}</td>
+      <td>
+        <button (click)="editarLibro(libro.id!)">Editar</button>
+        <button (click)="eliminarLibro(libro.id!)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

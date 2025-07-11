@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Autor, AutorService } from '../autor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-autor-form',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './autor-form.component.html',
   styleUrl: './autor-form.component.css'
 })

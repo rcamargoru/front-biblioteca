@@ -1,0 +1,26 @@
+<h2>Lista de Géneros</h2>
+<button (click)="crearGenero()">Crear Género</button>
+
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let genero of generos">
+      <td>{{ genero.id }}</td>
+      <td>{{ genero.nombre }}</td>
+      <td>{{ genero.descripcion }}</td>
+      <td>{{ genero.estado ? 'Activo' : 'Inactivo' }}</td>
+      <td>
+        <button (click)="editarGenero(genero.id)">Editar</button>
+        <button (click)="eliminarGenero(genero.id)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

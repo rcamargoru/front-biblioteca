@@ -1,20 +1,59 @@
- <h2>{{ autor.id ? 'Editar Autor' : 'Crear Autor' }}</h2>
+<h2>{{ autor.id ? 'Editar Autor' : 'Crear Autor' }}</h2>
 
-    <form (ngSubmit)="guardar()">
-      <label>Nombre:</label>
-      <input [(ngModel)]="autor.nombre" name="nombre" required />
+<form #form="ngForm" (ngSubmit)="guardar()" novalidate>
 
-      <label>Fecha de Nacimiento:</label>
-      <input type="date" [(ngModel)]="autor.fechaNacimiento" name="fechaNacimiento" required />
+  <!-- Nombre -->
+  <label>Nombre:</label>
+  <input 
+    [(ngModel)]="autor.nombre"
+    name="nombre"
+    required
+    #nombre="ngModel" />
+  <div *ngIf="nombre.invalid && nombre.touched">
+    <small *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</small>
+  </div>
 
-      <label>Género:</label>
-      <input [(ngModel)]="autor.genero" name="genero" required />
+  <!-- Fecha de nacimiento -->
+  <label>Fecha de Nacimiento:</label>
+  <input 
+    type="date" 
+    [(ngModel)]="autor.fechaNacimiento" 
+    name="fechaNacimiento"
+    required
+    #fechaNacimiento="ngModel" />
+  <div *ngIf="fechaNacimiento.invalid && fechaNacimiento.touched">
+    <small *ngIf="fechaNacimiento.errors?.['required']">La fecha de nacimiento es obligatoria.</small>
+  </div>
 
-      <label>País:</label>
-      <input [(ngModel)]="autor.pais" name="pais" required />
+  <!-- Género -->
+  <label>Género:</label>
+  <input 
+    [(ngModel)]="autor.genero"
+    name="genero"
+    required
+    #genero="ngModel" />
+  <div *ngIf="genero.invalid && genero.touched">
+    <small *ngIf="genero.errors?.['required']">El género es obligatorio.</small>
+  </div>
 
-      <label>Estado:</label>
-      <input type="checkbox" [(ngModel)]="autor.estado" name="estado" />
+  <!-- País -->
+  <label>País:</label>
+  <input 
+    [(ngModel)]="autor.pais"
+    name="pais"
+    required
+    #pais="ngModel" />
+  <div *ngIf="pais.invalid && pais.touched">
+    <small *ngIf="pais.errors?.['required']">El país es obligatorio.</small>
+  </div>
 
-      <button type="submit">{{ autor.id ? 'Actualizar' : 'Crear' }}</button>
-    </form>
+  <!-- Estado -->
+  <label>Estado:</label>
+  <input type="checkbox" [(ngModel)]="autor.estado" name="estado" />
+
+  <!-- Botón -->
+  <button type="submit" [disabled]="form.invalid">
+    {{ autor.id ? 'Actualizar' : 'Crear' }}
+  </button>
+
+</form>

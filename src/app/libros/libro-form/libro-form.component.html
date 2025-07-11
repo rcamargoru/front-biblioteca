@@ -1,1 +1,90 @@
-<p>libro-form works!</p>
+<form #form="ngForm" (ngSubmit)="guardarLibro()" novalidate>
+  <!-- Título -->
+  <div>
+    <label for="titulo">Título:</label>
+    <input
+      id="titulo"
+      name="titulo"
+      [(ngModel)]="libro.titulo"
+      required
+      #titulo="ngModel"
+      placeholder="Título"
+    />
+    <div *ngIf="titulo.invalid && titulo.touched">
+      <small *ngIf="titulo.errors?.['required']">El título es obligatorio.</small>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="autor">Autor:</label>
+    <select
+      id="autor"
+      name="autor"
+      [(ngModel)]="libro.autor.id"
+      required
+      #autor="ngModel"
+    >
+      <option [value]="''" disabled selected>Seleccione un autor</option>
+      <option *ngFor="let a of autores" [value]="a.id">{{ a.nombre }}</option>
+    </select>
+    <div *ngIf="autor.invalid && autor.touched">
+      <small *ngIf="autor.errors?.['required']">Debe seleccionar un autor.</small>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="genero">Género:</label>
+    <select
+      id="genero"
+      name="genero"
+      [(ngModel)]="libro.genero.id"
+      required
+      #genero="ngModel"
+    >
+      <option [value]="''" disabled selected>Seleccione un género</option>
+      <option *ngFor="let g of generos" [value]="g.id">{{ g.nombre }}</option>
+    </select>
+    <div *ngIf="genero.invalid && genero.touched">
+      <small *ngIf="genero.errors?.['required']">Debe seleccionar un género.</small>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="isbn">ISBN:</label>
+    <input
+      id="isbn"
+      name="isbn"
+      [(ngModel)]="libro.isbn"
+      required
+      #isbn="ngModel"
+      placeholder="ISBN"
+    />
+    <div *ngIf="isbn.invalid && isbn.touched">
+      <small *ngIf="isbn.errors?.['required']">El ISBN es obligatorio.</small>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="stock">Stock:</label>
+    <input
+      id="stock"
+      name="stock"
+      type="number"
+      [(ngModel)]="libro.stock"
+      required
+      min="1"
+      #stock="ngModel"
+      placeholder="Stock"
+    />
+    <div *ngIf="stock.invalid && stock.touched">
+      <small *ngIf="stock.errors?.['required']">El stock es obligatorio.</small>
+      <small *ngIf="stock.errors?.['min']">El stock debe ser mayor a 0.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>

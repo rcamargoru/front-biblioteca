@@ -15,7 +15,7 @@ export interface Autor {
   providedIn: 'root'
 })
 export class AutorService {
- private apiUrl = 'http://localhost:8080/api/autores'; // Asegúrate de exponer este endpoint en tu backend
+ private apiUrl = 'http://localhost:8080/api/autores'; 
 
   constructor(private http: HttpClient) { }
 

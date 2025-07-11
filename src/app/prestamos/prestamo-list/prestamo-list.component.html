@@ -1,0 +1,31 @@
+<h2>Préstamos</h2>
+<button (click)="nuevoPrestamo()">Nuevo Préstamo</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Libro</th>
+      <th>Cliente</th>
+      <th>Fecha Préstamo</th>
+      <th>Posible Devolución</th>
+      <th>Real Devolución</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of prestamos">
+      <td>{{ p.id }}</td>
+      <td>{{ p.libroNombre }}</td>
+      <td>{{ p.clienteNombre }}</td>
+      <td>{{ p.fechaPrestamo | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ p.fechaPosibleDevolucion | date: 'yyyy-MM-dd' }}</td>
+      <td>{{ p.fechaRealDevolucion ? (p.fechaRealDevolucion | date: 'yyyy-MM-dd') : '-' }}</td>
+      <td>{{ p.estado }}</td>
+      <td>
+        <button (click)="editarPrestamo(p.id)">Editar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>{{ genero.id ? 'Editar Género' : 'Crear Género' }}</h2>
+
+  <form (ngSubmit)="guardarGenero()">
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="genero.nombre"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <input
+        type="text"
+        id="descripcion"
+        name="descripcion"
+        [(ngModel)]="genero.descripcion"
+      />
+    </div>
+
+    <div>
+      <label for="estado">Activo:</label>
+      <input
+        type="checkbox"
+        id="estado"
+        name="estado"
+        [(ngModel)]="genero.estado"
+      />
+    </div>
+
+    <button type="submit">Guardar</button>
+  </form>
+</div>

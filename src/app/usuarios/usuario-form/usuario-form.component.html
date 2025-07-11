@@ -1,0 +1,68 @@
+<h2>{{ usuario.id ? 'Editar Usuario' : 'Nuevo Usuario' }}</h2>
+
+<form #form="ngForm" (ngSubmit)="guardarUsuario()" novalidate>
+  <!-- Nombre -->
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input
+      type="text"
+      id="nombre"
+      name="nombre"
+      [(ngModel)]="usuario.nombre"
+      required
+      minlength="2"
+      #nombre="ngModel"
+    />
+    <div *ngIf="nombre.invalid && nombre.touched">
+      <small *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</small>
+      <small *ngIf="nombre.errors?.['minlength']">Mínimo 2 caracteres.</small>
+    </div>
+  </div>
+
+  <!-- Documento -->
+  <div>
+    <label for="documento">Documento:</label>
+    <input
+      type="number"
+      id="documento"
+      name="documento"
+      [(ngModel)]="usuario.documento"
+      required
+      min="1"
+      #documento="ngModel"
+    />
+    <div *ngIf="documento.invalid && documento.touched">
+      <small *ngIf="documento.errors?.['required']">El documento es obligatorio.</small>
+      <small *ngIf="documento.errors?.['min']">Debe ser mayor que 0.</small>
+    </div>
+  </div>
+
+  <!-- Fecha de nacimiento -->
+  <div>
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input
+      type="date"
+      id="fechaNacimiento"
+      name="fechaNacimiento"
+      [(ngModel)]="usuario.fechaNacimiento"
+      required
+      #fechaNacimiento="ngModel"
+    />
+    <div *ngIf="fechaNacimiento.invalid && fechaNacimiento.touched">
+      <small>La fecha de nacimiento es obligatoria.</small>
+    </div>
+  </div>
+
+  <!-- Estado -->
+  <div>
+    <label for="estado">Activo:</label>
+    <input
+      type="checkbox"
+      id="estado"
+      name="estado"
+      [(ngModel)]="usuario.estado"
+    />
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Guardar</button>
+</form>
